@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PatientRecordsManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PtntInfoRecordsTable">
+    <Key>
+      <PropertyRef Name="PtntID" />
+    </Key>
+    <Property Name="PtntID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PtntGivenName" Type="varchar" MaxLength="50" />
+    <Property Name="PtntMidName" Type="varchar" MaxLength="50" />
+    <Property Name="PtntSurname" Type="varchar" MaxLength="50" />
+    <Property Name="PtntAge" Type="int" />
+    <Property Name="PtntGender" Type="varchar" MaxLength="50" />
+    <Property Name="PtntWeight" Type="int" />
+    <Property Name="PtntBirthdate" Type="varchar" MaxLength="50" />
+    <Property Name="PtntBirthplace" Type="varchar" MaxLength="50" />
+    <Property Name="AddrHouseNum" Type="varchar" MaxLength="50" />
+    <Property Name="AddrSubdBrgy" Type="varchar" MaxLength="50" />
+    <Property Name="AddrCityProv" Type="varchar" MaxLength="50" />
+    <Property Name="FthrGivName" Type="varchar" MaxLength="50" />
+    <Property Name="FthrMidName" Type="varchar" MaxLength="50" />
+    <Property Name="FthrSurname" Type="varchar" MaxLength="50" />
+    <Property Name="MthrGivName" Type="varchar" MaxLength="50" />
+    <Property Name="MthrMidName" Type="varchar" MaxLength="50" />
+    <Property Name="MthrSurname" Type="varchar" MaxLength="50" />
+    <Property Name="GrdnGivName" Type="varchar" MaxLength="50" />
+    <Property Name="GrdnMidName" Type="varchar" MaxLength="50" />
+    <Property Name="GrdnSurname" Type="varchar" MaxLength="50" />
+    <Property Name="AgeUnit" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PtntVaccineRecordsTable">
+    <Key>
+      <PropertyRef Name="PtntVacID" />
+      <PropertyRef Name="VaccineID" />
+    </Key>
+    <Property Name="PtntVacID" Type="int" Nullable="false" />
+    <Property Name="VaccineID" Type="int" Nullable="false" />
+    <Property Name="VacLotNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date1stDose" Type="varchar" MaxLength="50" />
+    <Property Name="Date2ndDose" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UsersTable">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmpCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmpPassword" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VaccineUnits">
+    <Key>
+      <PropertyRef Name="VaccineID" />
+    </Key>
+    <Property Name="VaccineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VaccineName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_PtntVaccineRecordsTable_PtntInfoRecordsTable">
+    <End Role="PtntInfoRecordsTable" Type="Self.PtntInfoRecordsTable" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PtntVaccineRecordsTable" Type="Self.PtntVaccineRecordsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PtntInfoRecordsTable">
+        <PropertyRef Name="PtntID" />
+      </Principal>
+      <Dependent Role="PtntVaccineRecordsTable">
+        <PropertyRef Name="PtntVacID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PtntVaccineRecordsTable_VaccineUnits">
+    <End Role="VaccineUnits" Type="Self.VaccineUnits" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PtntVaccineRecordsTable" Type="Self.PtntVaccineRecordsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VaccineUnits">
+        <PropertyRef Name="VaccineID" />
+      </Principal>
+      <Dependent Role="PtntVaccineRecordsTable">
+        <PropertyRef Name="VaccineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PatientRecordsManagementSystemModelStoreContainer">
+    <EntitySet Name="PtntInfoRecordsTable" EntityType="Self.PtntInfoRecordsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PtntVaccineRecordsTable" EntityType="Self.PtntVaccineRecordsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersTable" EntityType="Self.UsersTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VaccineUnits" EntityType="Self.VaccineUnits" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PtntVaccineRecordsTable_PtntInfoRecordsTable" Association="Self.FK_PtntVaccineRecordsTable_PtntInfoRecordsTable">
+      <End Role="PtntInfoRecordsTable" EntitySet="PtntInfoRecordsTable" />
+      <End Role="PtntVaccineRecordsTable" EntitySet="PtntVaccineRecordsTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PtntVaccineRecordsTable_VaccineUnits" Association="Self.FK_PtntVaccineRecordsTable_VaccineUnits">
+      <End Role="VaccineUnits" EntitySet="VaccineUnits" />
+      <End Role="PtntVaccineRecordsTable" EntitySet="PtntVaccineRecordsTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

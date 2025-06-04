@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PatientRecordsManagementSystemModelStoreContainer" CdmEntityContainer="PatientRecordsManagementSystemEntities">
+    <EntitySetMapping Name="PtntInfoRecordsTables">
+      <EntityTypeMapping TypeName="PatientRecordsManagementSystemModel.PtntInfoRecordsTable">
+        <MappingFragment StoreEntitySet="PtntInfoRecordsTable">
+          <ScalarProperty Name="AgeUnit" ColumnName="AgeUnit" />
+          <ScalarProperty Name="GrdnSurname" ColumnName="GrdnSurname" />
+          <ScalarProperty Name="GrdnMidName" ColumnName="GrdnMidName" />
+          <ScalarProperty Name="GrdnGivName" ColumnName="GrdnGivName" />
+          <ScalarProperty Name="MthrSurname" ColumnName="MthrSurname" />
+          <ScalarProperty Name="MthrMidName" ColumnName="MthrMidName" />
+          <ScalarProperty Name="MthrGivName" ColumnName="MthrGivName" />
+          <ScalarProperty Name="FthrSurname" ColumnName="FthrSurname" />
+          <ScalarProperty Name="FthrMidName" ColumnName="FthrMidName" />
+          <ScalarProperty Name="FthrGivName" ColumnName="FthrGivName" />
+          <ScalarProperty Name="AddrCityProv" ColumnName="AddrCityProv" />
+          <ScalarProperty Name="AddrSubdBrgy" ColumnName="AddrSubdBrgy" />
+          <ScalarProperty Name="AddrHouseNum" ColumnName="AddrHouseNum" />
+          <ScalarProperty Name="PtntBirthplace" ColumnName="PtntBirthplace" />
+          <ScalarProperty Name="PtntBirthdate" ColumnName="PtntBirthdate" />
+          <ScalarProperty Name="PtntWeight" ColumnName="PtntWeight" />
+          <ScalarProperty Name="PtntGender" ColumnName="PtntGender" />
+          <ScalarProperty Name="PtntAge" ColumnName="PtntAge" />
+          <ScalarProperty Name="PtntSurname" ColumnName="PtntSurname" />
+          <ScalarProperty Name="PtntMidName" ColumnName="PtntMidName" />
+          <ScalarProperty Name="PtntGivenName" ColumnName="PtntGivenName" />
+          <ScalarProperty Name="PtntID" ColumnName="PtntID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PtntVaccineRecordsTables">
+      <EntityTypeMapping TypeName="PatientRecordsManagementSystemModel.PtntVaccineRecordsTable">
+        <MappingFragment StoreEntitySet="PtntVaccineRecordsTable">
+          <ScalarProperty Name="Date2ndDose" ColumnName="Date2ndDose" />
+          <ScalarProperty Name="Date1stDose" ColumnName="Date1stDose" />
+          <ScalarProperty Name="VacLotNumber" ColumnName="VacLotNumber" />
+          <ScalarProperty Name="VaccineID" ColumnName="VaccineID" />
+          <ScalarProperty Name="PtntVacID" ColumnName="PtntVacID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersTables">
+      <EntityTypeMapping TypeName="PatientRecordsManagementSystemModel.UsersTable">
+        <MappingFragment StoreEntitySet="UsersTable">
+          <ScalarProperty Name="EmpPassword" ColumnName="EmpPassword" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VaccineUnits">
+      <EntityTypeMapping TypeName="PatientRecordsManagementSystemModel.VaccineUnit">
+        <MappingFragment StoreEntitySet="VaccineUnits">
+          <ScalarProperty Name="VaccineName" ColumnName="VaccineName" />
+          <ScalarProperty Name="VaccineID" ColumnName="VaccineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
